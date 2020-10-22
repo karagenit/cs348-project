@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block page_content %}
+<h1>Student Homepage</h1>
+<form action="{{pk}}/" method="post">
+    {% csrf_token %}
+    <div class="form-group">
+        Name*: {{ form.Name }}
+    </div>
+    <div class="form-group">
+        Email: {{form.Email}}
+    </div>
+    <div class="form-group">
+        Phone: {{ form.Phone }}
+    </div>
+    <div class="form-group">
+        Major: {{ form.Major }}
+    </div>
+    <div class="form-group">
+        GPA: {{ form.GPA}}
+    </div>
+    <div class="form-group">
+        Hometown: {{ form.Hometown }}
+    </div>
+    <div class="form-group">
+        Class: {{ form.Grade }}
+    </div>
+    <button type="submit" class="btn btn-primary">Update Info</button>
+    <button type="submit" class="btn btn-primary">Cancel</button>
+</form>
+{% endblock %}

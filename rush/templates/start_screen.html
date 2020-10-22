@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block page_content %}
+<h1>Homepage</h1>
+<h3>Students</h3>
+<form action="" method="post">
+    {% csrf_token %}
+    <div class="form-group">
+        {{ form.puid }}
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}

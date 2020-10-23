@@ -6,7 +6,7 @@ class StudentLoginForm(forms.Form):
     }))
 class StudentRegistration(forms.Form):
     Name = forms.CharField(max_length=200)
-    Email = forms.CharField(
+    Email = forms.EmailField(
         required=False,
     )
     Phone = forms.CharField(
@@ -20,3 +20,10 @@ class StudentRegistration(forms.Form):
     Hometown = forms.CharField(max_length=200, required=False)
     CHOICES = (('FR', 'Freshman'), ('SO', 'Sophomore'), ('JR', 'Junior'),('SR', 'Senior & Above'),)
     Grade = forms.ChoiceField(choices=CHOICES, required=False)
+class FraternityLogin(forms.Form):
+    Email = forms.EmailField()
+    Password = forms.CharField(max_length=100, widget=forms.PasswordInput())
+class FraternityRegistration(forms.Form):
+    Name = forms.CharField(max_length=200)
+    Email = forms.EmailField()
+    Password = forms.CharField(max_length=100, widget=forms.PasswordInput())

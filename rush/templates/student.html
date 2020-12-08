@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block page_content %}
+<h1>Name: {{student.name}}</h1>
+<h2>Email: {{student.email}}</h2>
+<h2>Phone: {{student.phone}}</h2>
+<h2>Major: {{student.major}}</h2>
+<h2>GPA: {{student.gpa}}</h2>
+<h2>Hometown: {{student.hometown}}</h2>
+<h2>Grade: {{student.grade}}</h2>
+<a class="btn btn-primary" href="/fraternity/{{id}}/">Return</a>
+<h2>Events Attended: </h2>
+<div class="list">
+    {% for event in attended %}
+        <h3>{{event.name}}</h3>
+        <br>
+    {%endfor%}
+</div>
+{% endblock %}

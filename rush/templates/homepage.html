@@ -1,30 +1,18 @@
 {% extends "base.html" %}
 {% block page_content %}
-<h1>Student Homepage</h1>
-<form action="{{pk}}/" method="post">
-    {% csrf_token %}
-    <div class="form-group">
-        Name*: {{ form.Name }}
-    </div>
-    <div class="form-group">
-        Email: {{form.Email}}
-    </div>
-    <div class="form-group">
-        Phone: {{ form.Phone }}
-    </div>
-    <div class="form-group">
-        Major: {{ form.Major }}
-    </div>
-    <div class="form-group">
-        GPA: {{ form.GPA}}
-    </div>
-    <div class="form-group">
-        Hometown: {{ form.Hometown }}
-    </div>
-    <div class="form-group">
-        Class: {{ form.Grade }}
-    </div>
-    <button type="submit" class="btn btn-primary">Update Info</button>
-    <button type="submit" class="btn btn-primary">Cancel</button>
-</form>
+<h1>Welcome, {{student.name}}</h1>
+<h3>Fraternities Accepting Applicants</h3>
+<div class="list">
+    {% for frat in fraternities %}
+        {{frat.name}}
+        <a class="btn btn-primary" href="/{{pk}}/fraternity/{{frat.id}}/">Apply</a>
+    {%endfor%}
+</div>
+<h3>Applied</h3>
+<div class="list">
+    {% for fra in applied %}
+        {{fra.name}}
+        <a class="btn btn-primary" href="/{{pk}}/fraternity/brief/{{fra.id}}/">Events</a>
+    {%endfor%}
+</div>
 {% endblock %}

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block page_content %}
+<h1>{{fraternity.name}}</h1>
+<h3>Events</h3>
+<div class="list">
+    {% for event in events %}
+        {{event.name}}
+        <a class="btn btn-primary" href="/{{id}}/fraternity/{{fraternity.id}}/event/{{event.id}}/">Details</a>
+    {% endfor %}
+</div>
+<a class="btn btn-primary" href="/student/{{id}}/">Return</a>
+{% endblock %}

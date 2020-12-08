@@ -2,4 +2,21 @@
 {% block page_content %}
 <h1>Fraternity Homepage</h1>
 <h3>Welcome, {{fraternity.name}}</h3>
+<a class="btn btn-primary" href="/fraternity/{{id}}/eventSetup/">Create New Event</a>
+<h3>Events</h3>
+<div class="list">
+    {% for event in events %}
+        {{event.name}} 
+        <a class="btn btn-primary" href="/{{id}}/event/{{event.id}}">Details</a>
+        <br>
+    {%endfor%}
+</div>
+<div class="list">
+    <h3>Applicants</h3>
+    {% for person in applicants %}
+        {{person.name}}
+        <a class="btn btn-primary" href="/fraternity/{{id}}/{{person.puid}}">Details</a>
+        <br>
+    {%endfor%}
+</div>
 {% endblock %}

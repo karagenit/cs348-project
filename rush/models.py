@@ -3,11 +3,6 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 # Create your models here.
 
-class Fraternity(models.Model):
-    # automatically generates an ID#
-    name = models.CharField(max_length = 200)
-    email = models.EmailField(unique = True)
-    password = models.CharField(max_length = 100)
 
 class Student(models.Model):
     puid = models.PositiveIntegerField(primary_key = True)
@@ -25,8 +20,15 @@ class Student(models.Model):
     GRADE_CHOICES = [(FRESHMAN, 'Freshman'),(SOPHOMORE, 'Sophomore'),(JUNIOR, 'Junior'),(SENIOR, 'Senior & Above'),]
     grade = models.CharField(max_length = 2, choices = GRADE_CHOICES, blank = True)
 
+class Fraternity(models.Model):
+    # automatically generates an ID#
+    name = models.CharField(max_length = 200)
+    email = models.EmailField(unique = True)
+    password = models.CharField(max_length = 100)
+    applicants = models.ManyToManyField(Student, blank=True)
+
 class Event(models.Model):
     name = models.CharField(max_length = 200)
     date = models.DateField(db_index = True)
     host = models.ForeignKey(Fraternity, on_delete = models.CASCADE)
-    attendees = models.ManyToManyField(Student)
+    attendees = models.ManyToManyField(Student,blank = True)

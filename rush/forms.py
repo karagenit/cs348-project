@@ -27,3 +27,7 @@ class FraternityRegistration(forms.Form):
     Name = forms.CharField(max_length=200)
     Email = forms.EmailField()
     Password = forms.CharField(max_length=100, widget=forms.PasswordInput())
+
+class EventRegistration(forms.Form):
+    Name = forms.CharField(max_length=200)
+    Date = forms.DateField()

@@ -96,11 +96,16 @@ def fraternityHome(request, pk):
     fraternity = Fraternity.objects.get(id=pk)
     events = Event.objects.filter(host=(Fraternity.objects.get(id=pk)))
     applicants = fraternity.applicants.all()
+    attendance = {}
+    for x in applicants:
+        attendance[x.name] = Event.objects.filter(host=(fraternity), attendees=x).count()
+    dict(sorted(attendance.items(), key=lambda  item: item[1]))
     context = {
         "fraternity":fraternity,
         "id":pk,
         "events":events,
         "applicants": applicants,
+        "attendance": attendance,
     }
     return render(request, 'fraternity_home.html', context)
 
@@ -166,3 +171,11 @@ def eventBrief(request, pk, fid, event):
         "id":pk,
     }
     return render(request, 'event_brief.html', context)
+
+def eventBrief2(request, pk, event):
+    event = Event.objects.get(id=event)
+    context = {
+        "event":event,
+        "id":pk,
+    }
+    return render(request, 'event_brief_brief.html',context)

@@ -13,5 +13,6 @@ urlpatterns = [
     path("<int:student>/fraternity/<int:pk>/",views.fraternity, name="fraternity"),
     path("fraternity/<int:pk>/eventSetup/", views.eventSetup, name="event_setup"),
     path("fraternity/<int:pk>/<int:puid>/",views.studentBrief, name="student_brief"),
-    path("<int:pk>/event/<int:id>/", views.event, name="event")
+    path("<int:pk>/event/<int:id>/", views.event, name="event"),
+    path("<int:pk>/<int:event>/", views.eventBrief2, name="event_brief2")
 ]

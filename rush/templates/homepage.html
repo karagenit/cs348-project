@@ -13,6 +13,13 @@
     {% for fra in applied %}
         {{fra.name}}
         <a class="btn btn-primary" href="/{{pk}}/fraternity/brief/{{fra.id}}/">Events</a>
+        <br>
+    {%endfor%}
+    <h3>Events</h3>
+    {% for event in events %}
+        {{event.name}}
+        <a class="btn btn-primary" href="/{{pk}}/{{event.id}}/">Details</a>
+        <br>
     {%endfor%}
 </div>
 {% endblock %}
